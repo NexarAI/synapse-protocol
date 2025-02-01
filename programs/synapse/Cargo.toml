@@ -1,0 +1,31 @@
+[package]
+name = "synapse-protocol"
+version = "0.1.0"
+description = "Nexar AI™ Synapse Protocol - Advanced neural consensus and state synchronization on Solana"
+edition = "2021"
+license = "MIT"
+authors = ["Nexar AI™"]
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "synapse_protocol"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
+
+[dependencies]
+anchor-lang = "0.28.0"
+anchor-spl = "0.28.0"
+solana-program = "1.16"
+thiserror = "1.0"
+arrayref = "0.3.7"
+borsh = "0.10.3"
+ed25519-dalek = "1.0.1"
+
+[dev-dependencies]
+solana-program-test = "1.16"
+solana-sdk = "1.16" 

@@ -1,0 +1,81 @@
+# Use official Jupyter Data Science image as base
+FROM jupyter/datascience-notebook:latest
+
+# Switch to root to install system dependencies
+USER root
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Node.js
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y nodejs \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Solana CLI tools
+RUN sh -c "$(curl -sSfL https://release.solana.com/v1.17.0/install)"
+
+# Create working directory
+WORKDIR /notebooks
+
+# Copy package files
+COPY package*.json ./
+
+# Install Node.js dependencies
+RUN npm install
+
+# Install Python dependencies
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Install Jupyter extensions
+RUN jupyter labextension install \
+    @jupyter-widgets/jupyterlab-manager \
+    jupyterlab-plotly \
+    @jupyterlab/toc
+
+# Install additional Python packages for data science
+RUN pip install --no-cache-dir \
+    pandas \
+    numpy \
+    matplotlib \
+    seaborn \
+    scikit-learn \
+    tensorflow \
+    torch \
+    plotly \
+    ipywidgets \
+    jupyterlab-dash
+
+# Create directories for data and notebooks
+RUN mkdir -p /data /notebooks
+
+# Copy example notebooks
+COPY notebooks/* /notebooks/
+
+# Set permissions
+RUN chown -R $NB_UID:$NB_GID /notebooks /data
+
+# Switch back to notebook user
+USER $NB_UID
+
+# Configure Jupyter
+RUN jupyter notebook --generate-config
+COPY jupyter_notebook_config.py /home/$NB_USER/.jupyter/
+
+# Set working directory
+WORKDIR /notebooks
+
+# Expose Jupyter port
+EXPOSE 8888
+
+# Start Jupyter Lab
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]
+
+# Add labels
+LABEL org.opencontainers.image.source="https://github.com/NexarAI/synapse-protocol"
+LABEL org.opencontainers.image.description="Nexar AI™ Synapse Protocol Jupyter Environment"
+LABEL org.opencontainers.image.licenses="MIT" 
