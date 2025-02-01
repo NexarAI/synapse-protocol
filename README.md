@@ -1,7 +1,7 @@
 # Nexar AI™ Synapse Protocol SDK
 
 <div align="center">
-  <img src="config/nexarheader.png" alt="Nexar AI Synapse Protocol" width="200"/>
+  <img src="config/nexarheader.png" alt="Nexar AI Synapse Protocol" width="1500"/>
   <h3>Decentralized AI Protocol on Solana</h3>
   
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
