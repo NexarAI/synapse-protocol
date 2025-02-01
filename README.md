@@ -13,12 +13,12 @@ Nexar AI™ Synapse Protocol is a revolutionary decentralized AI protocol built 
 
 ### Key Features
 
-- 🚀 **10x Faster dApps**: Enhanced performance through AI-powered optimization
-- 🧠 **Scalable Intelligence**: Grows smarter with each interaction
-- ⏰ **24/7 Always Active**: Continuous learning and adaptation
-- 🔒 **Enterprise-Grade Security**: Multi-layered security architecture with real-time threat detection
-- ⚡ **High Performance**: Process thousands of transactions per second with minimal latency
-- 🔌 **Easy Integration**: Comprehensive SDK with support for multiple programming languages
+- **10x Faster dApps**: Enhanced performance through AI-powered optimization
+- **Scalable Intelligence**: Grows smarter with each interaction
+- **24/7 Always Active**: Continuous learning and adaptation
+- **Enterprise-Grade Security**: Multi-layered security architecture with real-time threat detection
+- **High Performance**: Process thousands of transactions per second with minimal latency
+- **Easy Integration**: Comprehensive SDK with support for multiple programming languages
 
 ## Quick Start
 
